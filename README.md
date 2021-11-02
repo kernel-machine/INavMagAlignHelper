@@ -11,7 +11,7 @@ this operation is not easy for a beginner users, the purpose of this software is
 
 ### How to run
 
-The web page is hosted on GitHub pages, click here to go to the web page
+The web page is hosted on GitHub pages, click [here](https://kernel-machine.github.io/INavMagAlignHelper/) to go to the web page
 
 ### Development
 
