@@ -10,6 +10,8 @@ import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader';
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls';
 import {ElLoading} from 'element-plus'
 
+const baseUrl = window.location.href;
+
 const manager = new THREE.LoadingManager();
 const gltfLoader = new GLTFLoader(manager);
 const scene = new THREE.Scene();
@@ -58,7 +60,7 @@ export default {
   },
   methods: {
     loadQuad() {
-      gltfLoader.load(window.location+"/models/quad.gltf", model => {
+      gltfLoader.load(baseUrl + "/models/quad.gltf", model => {
         const quad = new THREE.Group()
         quad.add(model.scene)
         const scaleFactor = 3
@@ -71,7 +73,7 @@ export default {
       })
     },
     loadGPS() {
-      gltfLoader.load(window.location+"/models/Beitian-BN880.gltf", model => {
+      gltfLoader.load(baseUrl + "/models/Beitian-BN880.gltf", model => {
         this.gps = new THREE.Group()
         this.gps.add(model.scene)
         const scaleFactor = 0.13
