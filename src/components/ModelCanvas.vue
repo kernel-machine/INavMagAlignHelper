@@ -1,6 +1,6 @@
 <template>
   <div>
-    <canvas id="c" width="500" height="450"></canvas>
+    <canvas id="c" width="650" height="450"></canvas>
   </div>
 </template>
 
@@ -15,7 +15,6 @@ const baseUrl = window.location.href;
 const manager = new THREE.LoadingManager();
 const gltfLoader = new GLTFLoader(manager);
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
 const loadingInstance = ElLoading.service({fullscreen: true})
 
 export default {
@@ -28,9 +27,10 @@ export default {
   mounted() {
     const canvas = document.querySelector('#c')
     this.renderer = new THREE.WebGLRenderer({canvas});
-    this.controls = new OrbitControls(camera, this.renderer.domElement);
-    camera.position.set(-30, 30, 0);
-    camera.setFocalLength(50)
+    this.camera = new THREE.PerspectiveCamera(70, canvas.width/canvas.height, 0.1, 1000);
+    this.controls = new OrbitControls(this.camera, this.renderer.domElement);
+    this.camera.position.set(-25, 35, 35);
+    this.camera.setFocalLength(50)
     this.controls.update();
 
     scene.background = new THREE.Color(0.8, 0.8, 0.8)
@@ -46,8 +46,6 @@ export default {
     const directionLight2 = new THREE.DirectionalLight(color, 0.5)
     directionLight2.position.set(-10, -10, -10)
     scene.add(directionLight2)
-
-    camera.position.z = 5;
 
     manager.onLoad = () => {
       loadingInstance.close()
@@ -99,7 +97,8 @@ export default {
       if (this.controls)
         this.controls.update();
 
-      this.renderer.render(scene, camera)
+      if (this.camera != null)
+        this.renderer.render(scene, this.camera)
     }
   }
 }

@@ -4,26 +4,26 @@
       <ModelCanvas :gps-pitch-axis="pitchAxis" :gps-roll-axis="rollAxis" :gps-yaw-axis="yawAxis"></ModelCanvas>
     </div>
     <div>
-      <p>Moves the axis to rotate the GPS module</p>
+      <p>Moves the axes to rotate the GPS module along the quadcopter axes</p>
       <div>
         <b>Pitch Axis:
           <el-button type="primary" size="mini" v-on:click="resetRollAxis">Reset</el-button>
         </b>
         <div>
-          <el-slider v-model="rollAxis" :min="-180" :max="180" :marks="{'-180':'-180°','180':'180°'}" show-input/>
+          <el-slider v-model="rollAxis" :min="-180" :max="180" :marks="{'-180':'-180°','0':'0°','180':'180°'}" show-input/>
         </div>
       </div>
       <div class="mt-2">
         <b> Roll Axis:
           <el-button type="primary" size="mini" v-on:click="resetPitchAxis">Reset</el-button>
         </b>
-        <el-slider v-model="pitchAxis" :min="-180" :max="180" :marks="{'-180':'-180°','180':'180°'}" show-input/>
+        <el-slider v-model="pitchAxis" :min="-180" :max="180" :marks="{'-180':'-180°','0':'0°','180':'180°'}" show-input/>
       </div>
       <div>
         <b> Yaw Axis:
           <el-button type="primary" size="mini" v-on:click="resetYawAxis">Reset</el-button>
         </b>
-        <el-slider v-model="yawAxis" :min="-360" :max="360" :step="45" :marks="{'-360':'-360°','360':'360°'}"
+        <el-slider v-model="yawAxis" :min="-360" :max="90" :step="45" :marks="{'-360':'-360°','0':'0°','90':'90°'}"
                    show-input show-stops/>
       </div>
     </div>
@@ -33,7 +33,7 @@
         <p>Copy and paste this lines on CLI in INav Configurator</p>
         <p>
           set align_mag_roll = {{ Number(rollAxis) * 10 }}<br>
-          set align_mag_pitch = {{ (180 - Number(pitchAxis)) * 10 }}<br>
+          set align_mag_pitch = {{ (180 + Number(pitchAxis)) * 10 }}<br>
           set align_mag_yaw = {{ (270 + Number(yawAxis)) * 10 }}
         </p>
         <p>Remember to enter <b>save</b> to save the configuration</p>
