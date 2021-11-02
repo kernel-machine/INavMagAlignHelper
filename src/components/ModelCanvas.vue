@@ -58,7 +58,7 @@ export default {
   },
   methods: {
     loadQuad() {
-      gltfLoader.load("/models/quad.gltf", model => {
+      gltfLoader.load(window.location+"/models/quad.gltf", model => {
         const quad = new THREE.Group()
         quad.add(model.scene)
         const scaleFactor = 3
@@ -71,7 +71,7 @@ export default {
       })
     },
     loadGPS() {
-      gltfLoader.load("/models/Beitian-BN880.gltf", model => {
+      gltfLoader.load(window.location+"/models/Beitian-BN880.gltf", model => {
         this.gps = new THREE.Group()
         this.gps.add(model.scene)
         const scaleFactor = 0.13
