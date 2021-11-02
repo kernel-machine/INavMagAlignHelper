@@ -15,7 +15,8 @@ The web page is hosted on GitHub pages, click [here](https://kernel-machine.gith
 
 ### Development
 
-The project use [Three.js](https://github.com/mrdoob/three.js/) and [Vue](https://vuejs.org/), feel free to make your contributions
+The project uses [Three.js](https://github.com/mrdoob/three.js/), [Vue](https://vuejs.org/) and
+[Element Plus](https://element-plus.org/en-US/), feel free to make your contributions making a pull request
 
 ### How to run for development
 
