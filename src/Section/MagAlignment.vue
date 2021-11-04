@@ -48,7 +48,7 @@ import ModelCanvas from "@/components/ModelCanvas";
 const default_value = {
   roll: 0,
   pitch: 0,
-  yaw: 0
+  yaw: 270
 }
 
 export default {
@@ -56,9 +56,9 @@ export default {
   components: {ModelCanvas},
   data() {
     return {
-      rollAxis: 0,
-      pitchAxis: 0,
-      yawAxis: 270,
+      rollAxis: default_value.roll,
+      pitchAxis: default_value.pitch,
+      yawAxis: default_value.yaw,
     }
   },
   methods: {

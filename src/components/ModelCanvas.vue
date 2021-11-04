@@ -27,7 +27,7 @@ export default {
   mounted() {
     const canvas = document.querySelector('#c')
     this.renderer = new THREE.WebGLRenderer({canvas});
-    this.camera = new THREE.PerspectiveCamera(70, canvas.width/canvas.height, 0.1, 1000);
+    this.camera = new THREE.PerspectiveCamera(70, canvas.width / canvas.height, 0.1, 1000);
     this.controls = new OrbitControls(this.camera, this.renderer.domElement);
     this.camera.position.set(-25, 35, 35);
     this.camera.setFocalLength(50)
@@ -72,8 +72,7 @@ export default {
     },
     loadGPS() {
       gltfLoader.load(baseUrl + "/models/Beitian-BN880.gltf", model => {
-        this.gps = new THREE.Group()
-        this.gps.add(model.scene)
+        this.gps = model.scene
         const scaleFactor = 0.13
         this.gps.scale.set(scaleFactor, scaleFactor, scaleFactor)
         this.gps.position.x += 8
@@ -82,15 +81,14 @@ export default {
         })
         this.gps.rotation.y = 3 * Math.PI / 2
         scene.add(this.gps)
+
       })
     },
     animate() {
       requestAnimationFrame(this.animate)
 
       if (this.gps) {
-        this.gps.rotation.x = THREE.Math.degToRad(this.gpsPitchAxis);
-        this.gps.rotation.y = THREE.Math.degToRad(this.gpsYawAxis);
-        this.gps.rotation.z = THREE.Math.degToRad(this.gpsRollAxis);
+        this.gps.rotation.set(THREE.Math.degToRad(this.gpsPitchAxis), THREE.Math.degToRad(this.gpsYawAxis), THREE.Math.degToRad(this.gpsRollAxis), 'YXZ');
       }
 
 
