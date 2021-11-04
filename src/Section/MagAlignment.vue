@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <ModelCanvas :gps-pitch-axis="pitchAxis" :gps-roll-axis="rollAxis" :gps-yaw-axis="yawAxis"></ModelCanvas>
+      <ModelCanvas :gps-pitch-axis="pitchAxis" :gps-roll-axis="rollAxis" :gps-yaw-axis="-90-yawAxis"></ModelCanvas>
     </div>
     <div>
       <p>Moves the axes to rotate the GPS module along the quadcopter axes</p>
@@ -10,20 +10,20 @@
           <el-button type="primary" size="mini" v-on:click="resetRollAxis">Reset</el-button>
         </b>
         <div>
-          <el-slider v-model="rollAxis" :min="-180" :max="180" :marks="{'-180':'-180°','0':'0°','180':'180°'}" show-input/>
+          <el-slider v-model="rollAxis" :min="-180" :max="180" :marks="generateLabels(-180,180,45)" show-input/>
         </div>
       </div>
       <div class="mt-2">
         <b> Roll Axis:
           <el-button type="primary" size="mini" v-on:click="resetPitchAxis">Reset</el-button>
         </b>
-        <el-slider v-model="pitchAxis" :min="-180" :max="180" :marks="{'-180':'-180°','0':'0°','180':'180°'}" show-input/>
+        <el-slider v-model="pitchAxis" :min="-180" :max="180" :marks="generateLabels(-180,180,45)" show-input/>
       </div>
       <div>
         <b> Yaw Axis:
           <el-button type="primary" size="mini" v-on:click="resetYawAxis">Reset</el-button>
         </b>
-        <el-slider v-model="yawAxis" :min="-360" :max="90" :step="45" :marks="{'-360':'-360°','0':'0°','90':'90°'}"
+        <el-slider v-model="yawAxis" :min="-180" :max="360" :step="45" :marks="generateLabels(-180,360,45)"
                    show-input show-stops/>
       </div>
     </div>
@@ -34,7 +34,7 @@
         <p>
           set align_mag_roll = {{ Number(rollAxis) * 10 }}<br>
           set align_mag_pitch = {{ (180 + Number(pitchAxis)) * 10 }}<br>
-          set align_mag_yaw = {{ (270 + Number(yawAxis)) * 10 }}
+          set align_mag_yaw = {{ (Number(yawAxis)) * 10 }}
         </p>
         <p>Remember to enter <b>save</b> to save the configuration</p>
       </el-card>
@@ -58,7 +58,7 @@ export default {
     return {
       rollAxis: 0,
       pitchAxis: 0,
-      yawAxis: 0,
+      yawAxis: 270,
     }
   },
   methods: {
@@ -70,6 +70,13 @@ export default {
     },
     resetYawAxis() {
       this.yawAxis = default_value.yaw
+    },
+    generateLabels(min, max, interval) {
+      let res = []
+      for (var i = min; i <= max; i += interval) {
+        res[String(i)] = String(i) + "°"
+      }
+      return res;
     }
   }
 }
