@@ -23,12 +23,3 @@ jobs:
         run: npm install
       - name: Building
         run: npm run build
-      - name: Deploing to GitHub Pages
-        # You may pin to the exact commit or the version.
-        # uses: crazy-max/ghaction-github-pages@b8f8d291c97fe0edd9fb4ee73018163593418e8f
-        uses: crazy-max/ghaction-github-pages@v2.3.0
-        with:
-          # Build directory to deploy
-          build_dir: ./dist
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
