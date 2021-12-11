@@ -9,6 +9,12 @@ this operation is not easy for a beginner users, the purpose of this software is
 - Paste the commands on the bottom in INav Configurator
 - Enter `save` to save the configuration
 
+### KNOWN ISSUES
+Some GPS modules which have a different orientation of the usual **CW 270 FLIP** don't work with this software. 
+
+Known modules with strange orientation:
+- [HGLRC M80 PRO](https://it.banggood.com/custlink/vvvYnWKpCs)
+
 ### How to run
 
 The software is a web page, so just click [here](https://kernel-machine.github.io/INavMagAlignHelper/) to access to the page
