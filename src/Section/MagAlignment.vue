@@ -29,8 +29,8 @@
     </div>
     <div :style="{margin:'30px'}">
       <el-card :body-style="{padding:'5px'}">
-        <template #header><b>INav CLI commands</b></template>
-        <p>Copy and paste this lines on CLI in INav Configurator</p>
+        <template #header><b>INAV CLI commands</b></template>
+        <p>Copy and paste this lines on CLI in INAV Configurator</p>
         <p>
           set align_mag_roll = {{ Number(rollAxis) * 10 }}<br>
           set align_mag_pitch = {{ (180 + Number(pitchAxis)) * 10 }}<br>

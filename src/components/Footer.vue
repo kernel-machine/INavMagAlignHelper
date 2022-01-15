@@ -6,7 +6,7 @@
           Nielsen
         </el-link>
         and
-        <el-link href="https://github.com/iNavFlight/inav-configurator" target="_blank">INav Configurator</el-link>
+        <el-link href="https://github.com/iNavFlight/inav-configurator" target="_blank">INAV Configurator</el-link>
       </el-col>
       <el-col :span="4">
         Developed by
