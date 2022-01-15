@@ -1,12 +1,12 @@
-# INav Magnetometer alignment helper
+# INAV Magnetometer alignment helper
 
-This software is an helper for set the magnetometer alignment in [INav](https://github.com/iNavFlight/inav),
+This software is an helper for set the magnetometer alignment in [INAV](https://github.com/iNavFlight/inav),
 this operation is not easy for a beginner users, the purpose of this software is to make this operation easier.
 
 ### How to use
 
 - Move the sliders until you get the right configuration in the 3D model
-- Paste the commands on the bottom in INav Configurator
+- Paste the commands on the bottom in INAV Configurator
 - Enter `save` to save the configuration
 
 ### KNOWN ISSUES

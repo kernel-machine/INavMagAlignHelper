@@ -3,7 +3,7 @@
     <el-header>
       <el-row :gutter="24" align="middle" justify="space-between">
         <el-col :span="18" align="left">
-          <h2>INav magnetometer alignment helper</h2>
+          <h2>INAV magnetometer alignment helper</h2>
         </el-col>
         <el-col :span="4" align="right">
           <!-- Place this tag where you want the button to render. -->
