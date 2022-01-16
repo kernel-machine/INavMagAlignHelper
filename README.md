@@ -6,7 +6,7 @@ this operation is not easy for a beginner users, the purpose of this software is
 ### How to use
 
 - Move the sliders until you get the right configuration in the 3D model
-- Paste the commands on the bottom in INAV Configurator
+- Paste the commands on the bottom in INAV Configurator CLI
 - Enter `save` to save the configuration
 
 ### KNOWN ISSUES
