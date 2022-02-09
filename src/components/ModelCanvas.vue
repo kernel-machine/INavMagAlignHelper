@@ -23,6 +23,7 @@ export default {
     gpsRollAxis: Number,
     gpsPitchAxis: Number,
     gpsYawAxis: Number,
+    isShowGps: Boolean
   },
   mounted() {
     const canvas = document.querySelector('#c')
@@ -53,6 +54,7 @@ export default {
 
     this.loadGPS()
     this.loadQuad()
+    this.loadXYZ()
 
     this.animate()
   },
@@ -84,13 +86,31 @@ export default {
 
       })
     },
+    loadXYZ() {
+      gltfLoader.load(baseUrl + "/models/xyz.gltf", model => {
+        this.xyz = model.scene
+        const scaleFactor = 0.15
+        this.xyz.scale.set(scaleFactor, scaleFactor, scaleFactor)
+        this.xyz.position.x += 10
+        this.xyz.traverse(child => {
+          if (child.material) child.material.opacity = 0.5;
+        })
+        scene.add(this.xyz)
+
+      })
+    },
     animate() {
       requestAnimationFrame(this.animate)
 
       if (this.gps) {
         this.gps.rotation.set(THREE.Math.degToRad(this.gpsPitchAxis), THREE.Math.degToRad(this.gpsYawAxis), THREE.Math.degToRad(this.gpsRollAxis), 'YXZ');
+        this.gps.visible = this.isShowGps
       }
 
+      if(this.xyz) {
+        this.xyz.rotation.set(THREE.Math.degToRad(this.gpsPitchAxis), THREE.Math.degToRad(this.gpsYawAxis), THREE.Math.degToRad(this.gpsRollAxis), 'YXZ');
+        this.xyz.visible = !this.isShowGps
+      }
 
       if (this.controls)
         this.controls.update();

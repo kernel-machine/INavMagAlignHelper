@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <ModelCanvas :gps-pitch-axis="pitchAxis" :gps-roll-axis="rollAxis" :gps-yaw-axis="-90-yawAxis"></ModelCanvas>
+      <ModelCanvas :gps-pitch-axis="pitchAxis" :gps-roll-axis="rollAxis" :gps-yaw-axis="-90-yawAxis" :is-show-gps="isShowGPS"></ModelCanvas>
     </div>
     <div>
       <p>Moves the axes to rotate the GPS module along the quadcopter axes</p>
@@ -26,6 +26,16 @@
         <el-slider v-model="yawAxis" :min="-180" :max="360" :step="45" :marks="generateLabels(-180,360,45)"
                    show-input show-stops/>
       </div>
+      <div :style="{margin:'30px'}">
+      <el-switch
+          v-model="isShowGPS"
+          class="mb-2"
+          active-color="#13ce66"
+          inactive-color="#ff4949"
+          active-text="Show GPS"
+          inactive-text="Show XYZ"
+      />
+      </div>
     </div>
     <div :style="{margin:'30px'}">
       <el-card :body-style="{padding:'5px'}">
@@ -48,7 +58,8 @@ import ModelCanvas from "@/components/ModelCanvas";
 const default_value = {
   roll: 0,
   pitch: 0,
-  yaw: 270
+  yaw: 270,
+  isShowGPS:true
 }
 
 export default {
@@ -59,6 +70,7 @@ export default {
       rollAxis: default_value.roll,
       pitchAxis: default_value.pitch,
       yawAxis: default_value.yaw,
+      isShowGPS:default_value.isShowGPS
     }
   },
   methods: {
@@ -81,9 +93,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.slider {
-  width: 100%;
-}
-</style>
