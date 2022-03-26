@@ -103,12 +103,12 @@ export default {
       requestAnimationFrame(this.animate)
 
       if (this.gps) {
-        this.gps.rotation.set(THREE.Math.degToRad(this.gpsPitchAxis), THREE.Math.degToRad(this.gpsYawAxis), THREE.Math.degToRad(this.gpsRollAxis), 'YXZ');
+        this.gps.rotation.set(-THREE.Math.degToRad(this.gpsPitchAxis), THREE.Math.degToRad(this.gpsYawAxis), THREE.Math.degToRad(this.gpsRollAxis), 'YXZ');
         this.gps.visible = this.isShowGps
       }
 
       if(this.xyz) {
-        this.xyz.rotation.set(THREE.Math.degToRad(this.gpsPitchAxis), THREE.Math.degToRad(this.gpsYawAxis), THREE.Math.degToRad(this.gpsRollAxis), 'YXZ');
+        this.xyz.rotation.set(-THREE.Math.degToRad(this.gpsPitchAxis), THREE.Math.degToRad(this.gpsYawAxis), THREE.Math.degToRad(this.gpsRollAxis), 'YXZ');
         this.xyz.visible = !this.isShowGps
       }
 
