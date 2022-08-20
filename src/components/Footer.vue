@@ -27,7 +27,6 @@
 </template>
 
 <script>
-
 export default {
   name: "Footer",
   components: {}
@@ -35,5 +34,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>
